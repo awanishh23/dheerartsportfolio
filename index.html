@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>D P Ojha - Fine Arts Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-content">
+                <div class="logo">dheerarts</div>
+                <ul class="nav-links">
+                    <li><a href="#profile">Profile</a></li>
+                    <li><a href="#experience">Experience</a></li>
+                    <li><a href="#education">Education</a></li>
+                    <li><a href="#awards">Awards</a></li>
+                    <li><a href="#gallery">Gallery</a></li>
+                </ul>
+                <button class="mobile-menu" id="mobileMenu">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Profile Section -->
+    <section id="profile" class="profile-section">
+        <div class="container">
+            <div class="profile-content">
+                <div class="profile-info fade-in">
+                    <h1>Dhirendra Pratap Ojha</h1>
+                    <h2>Fine Arts Falicitator & Professional Artist</h2>
+                    <p>I'm an art educator, mentor, and curriculum designer with 7+ years of experience in fine arts, graphic design, digital illustration and multimedia. I specialize in blending traditional techniques with modern tools like Adobe Creative Suite and CorelDRAW to create immersive, hands-on learning experiences. My passion lies in nurturing creative talent, building strong student portfolios, and preparing aspiring artists for success in the creative industry.</p>
+
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <span>dpojhafinearts@gmail.com</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <span>+91 9936011798</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Noida, UP</span>
+                        </div>
+                    </div>
+
+                    <div class="profile-actions">
+                        <a href="/resumedpojha.pdf" class="btn btn-primary">
+                            <i class="fas fa-download"></i>
+                            Download Resume
+                        </a>
+                        <div class="social-links">
+                            <a href="https://www.linkedin.com/in/dhirendra-pratap-ojha-4b77b92a6/" class="btn btn-outline social-btn">
+                                <i class="fab fa-linkedin"></i>
+                            </a>
+                            <a href="https://www.instagram.com/dheercreates?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" class="btn btn-outline social-btn">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="https://www.facebook.com/share/1ERq1dk7LY/" class="btn btn-outline social-btn">
+                                <i class="fab fa-facebook"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="profile-image scale-in">
+                    <div class="image-container">
+                        <img src="profile.jpeg" alt="Sarah Mitchell">
+                        <div class="image-badge">
+                            <i class="fas fa-palette"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="section experience-section">
+        <div class="container">
+            <div class="section-title fade-in">
+                <h2><i class="fas fa-briefcase"></i> Professional Experience</h2>
+                <p>Teaching career and professional art practice</p>
+        </div>
+
+        <div class="experience-grid" id="experienceGrid">
+            <!-- Experience items will be populated by JavaScript -->
+        </div>
+    </div>
+</section>
+
+    <!-- Education Section -->
+    <section id="education" class="section education-section">
+        <div class="container">
+            <div class="section-title fade-in">
+                <h2><i class="fas fa-graduation-cap"></i> Education</h2>
+                <p>Academic foundation and professional development</p>
+            </div>
+
+            <div class="education-grid" id="educationGrid">
+                <!-- Education items will be populated by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Awards Section -->
+    <section id="awards" class="section awards-section">
+        <div class="container">
+            <div class="section-title fade-in">
+                <h2><i class="fas fa-award"></i> Awards & Recognition</h2>
+                <p>Celebrating achievements in art and education</p>
+            </div>
+
+            <div class="awards-grid" id="awardsGrid">
+                <!-- Awards will be populated by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="section gallery-section">
+        <div class="container">
+            <div class="section-title fade-in">
+                <h2><i class="fas fa-palette"></i> Art Gallery</h2>
+                <p>A collection of my artistic works and student collaborations</p>
+            </div>
+
+            <div class="gallery-filters">
+                <i class="fas fa-filter"></i>
+                <div class="filter-buttons" id="filterButtons">
+                    <!-- Filter buttons will be populated by JavaScript -->
+                </div>
+            </div>
+
+            <div class="gallery-grid" id="galleryGrid">
+                <!-- Gallery items will be populated by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Artwork Modal -->
+    <div class="modal-overlay" id="artworkModal">
+        <div class="modal-content">
+            <img id="modalImage" src="/placeholder.svg" alt="" class="modal-image">
+            <div class="modal-info">
+                <div class="modal-header">
+                    <h2 id="modalTitle"></h2>
+                    <button class="close-btn" id="closeModal">Close</button>
+                </div>
+                <div class="modal-badges">
+                    <span class="category-badge" id="modalCategory"></span>
+                    <span class="year-badge" id="modalYear"></span>
+                </div>
+                <div class="modal-medium" id="modalMedium"></div>
+                <div class="modal-description" id="modalDescription"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <h3>Dhirendra Pratap Ojha</h3>
+            <p>Inspiring creativity through Art Education and Professional Practice</p>
+            <div class="footer-social">
+                <a href="https://www.linkedin.com/in/dhirendra-pratap-ojha-4b77b92a6/" class="social-btn">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+                <a href="https://www.instagram.com/dheercreates?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" class="social-btn">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://www.facebook.com/share/1ERq1dk7LY/" class="social-btn">
+                    <i class="fab fa-facebook"></i>
+                </a>
+            </div>
+            <div class="footer-copyright">© 2025 Dhirendra Pratap Ojha. All rights reserved.</div>
+            <div class="footer-copyright">Crafted and Designed by Awanish</div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

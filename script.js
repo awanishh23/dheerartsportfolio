@@ -113,13 +113,13 @@ const galleryCategories = [
     title: "Teaching Projects",
     category: "Teaching",
     description: "Collaborative works with students",
-    coverImage: "student2.jpeg",
+    coverImage: "student2.jpg",
     images: [
       {
         id: 10,
         title: "Student Collaboration",
         medium: "Community Mural",
-        image: "student2.jpeg",
+        image: "student2.jpg",
         description: "Large-scale mural created with high school students for the school cafeteria.",
         year: "2024",
       },
@@ -131,17 +131,17 @@ const galleryCategories = [
       {
         id: 11,
         title: "Workshop Results",
-        image: "student3.jpeg",
+        image: "student3.jpg",
       },
       {
         id: 11,
         title: "Workshop Results",
-        image: "student4.jpeg",
+        image: "student4.jpg",
       },
       {
         id: 11,
         title: "Workshop Results",
-        image: "student5.jpeg",
+        image: "student5.jpg",
       },
     ],
   },

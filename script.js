@@ -317,7 +317,7 @@ const experience = [
     duration: "2018-2019",
     location: "Delhi",
     description:
-      "Taught art fundamentals to middle college students, organized college art shows, and collaborated with other teachers on interdisciplinary projects.",
+      "Taught art fundamentals to college students, organized college art shows, and collaborated with other teachers on interdisciplinary projects.",
     skills: ["Art Fundamentals", "Event Organization", "Digital Art Program", "Interdisciplinary Teaching"],
   },
 ]

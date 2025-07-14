@@ -13,7 +13,7 @@
     <nav class="navbar">
         <div class="container">
             <div class="nav-content">
-                <div class="logo">dheercreates</div>
+                <div class="logo">dheerarts</div>
                 <ul class="nav-links">
                     <li><a href="#profile">Profile</a></li>
                     <li><a href="#experience">Experience</a></li>
@@ -160,14 +160,25 @@
         </div>
     </section>
 
-    <!-- Artwork Modal -->
+    <!-- Enhanced Artwork Modal -->
     <div class="modal-overlay" id="artworkModal">
         <div class="modal-content">
-            <img id="modalImage" src="/placeholder.svg" alt="" class="modal-image">
+            <div class="modal-image-container">
+                <img id="modalImage" src="/placeholder.svg" alt="" class="modal-image">
+                <button class="modal-nav-btn modal-prev" id="modalPrevBtn">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button class="modal-nav-btn modal-next" id="modalNextBtn">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+                <div class="modal-image-counter" id="modalImageCounter">1 of 3</div>
+            </div>
             <div class="modal-info">
                 <div class="modal-header">
                     <h2 id="modalTitle"></h2>
-                    <button class="close-btn" id="closeModal">Close</button>
+                    <button class="close-btn" id="closeModal">
+                        <i class="fas fa-times"></i>
+                    </button>
                 </div>
                 <div class="modal-badges">
                     <span class="category-badge" id="modalCategory"></span>
@@ -203,4 +214,5 @@
     <script src="script.js"></script>
 </body>
 </html>
+
 

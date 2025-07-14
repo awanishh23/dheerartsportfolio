@@ -1,3 +1,149 @@
+// Updated Data Structure - Multiple images per category
+const galleryCategories = [
+  {
+    id: 1,
+    title: "Paintings",
+    category: "Painting",
+    description: "A collection of my painting works using various mediums",
+    coverImage: "acryliconcanvas.jpeg",
+    images: [
+      {
+        id: 1,
+        title: "Fishing Boats - Van Gogh Style",
+        medium: "Acrylic on Canvas",
+        image: "acryliconcanvas.jpeg",
+        description: "A vibrant exploration inspired by Van Gogh's style with bold colors and expressive brushstrokes.",
+        year: "2024",
+      },
+      {
+        id: 2,
+        title: "Portrait Study",
+        medium: "Oil on Canvas",
+        image: "portraitoncanvas.jpeg",
+        description: "Emotional expression through bold brushstrokes and dynamic color relationships.",
+        year: "2023",
+      },
+      {
+        id: 3,
+        title: "Abstract Composition",
+        medium: "Acrylic on Canvas",
+        image: "acryliconcanvas.jpeg",
+        description: "An abstract exploration of form and color harmony.",
+        year: "2023",
+      },
+    ],
+  },
+  {
+    id: 2,
+    title: "Digital Art",
+    category: "Digital Art",
+    description: "Contemporary digital artwork exploring modern themes",
+    coverImage: "digital.jpeg",
+    images: [
+      {
+        id: 4,
+        title: "Digital Dreams",
+        medium: "Digital Mixed Media",
+        image: "digital.jpeg",
+        description: "Contemporary digital artwork exploring the intersection of technology and emotion.",
+        year: "2024",
+      },
+      {
+        id: 5,
+        title: "Cyber Landscape",
+        medium: "Digital Illustration",
+        image: "digital.jpeg",
+        description: "A futuristic landscape created using digital painting techniques.",
+        year: "2024",
+      },
+    ],
+  },
+  {
+    id: 3,
+    title: "Calligraphy",
+    category: "Calligraphy",
+    description: "Traditional and modern calligraphy works",
+    coverImage: "calligraphy.jpeg",
+    images: [
+      {
+        id: 6,
+        title: "Traditional Script",
+        medium: "Ink on Paper",
+        image: "calligraphy.jpeg",
+        description: "Organic forms and natural textures combined with traditional calligraphy techniques.",
+        year: "2023",
+      },
+      {
+        id: 7,
+        title: "Modern Calligraphy",
+        medium: "Watercolor & Ink",
+        image: "calligraphy.jpeg",
+        description: "Contemporary approach to traditional calligraphy art.",
+        year: "2024",
+      },
+    ],
+  },
+  {
+    id: 4,
+    title: "Sketches",
+    category: "Sketch",
+    description: "Collection of sketches and drawings",
+    coverImage: "sketch.jpeg",
+    images: [
+      {
+        id: 8,
+        title: "Figure Study",
+        medium: "Pencil on Paper",
+        image: "sketch.jpeg",
+        description: "Three-dimensional exploration of organic and geometric forms.",
+        year: "2024",
+      },
+      {
+        id: 9,
+        title: "Architectural Sketch",
+        medium: "Charcoal",
+        image: "sketch.jpeg",
+        description: "Detailed architectural study focusing on light and shadow.",
+        year: "2023",
+      },
+    ],
+  },
+  {
+    id: 5,
+    title: "Teaching Projects",
+    category: "Teaching",
+    description: "Collaborative works with students",
+    coverImage: "student.jpeg",
+    images: [
+      {
+        id: 10,
+        title: "Student Collaboration",
+        medium: "Community Mural",
+        image: "student.jpeg",
+        description: "Large-scale mural created with high school students for the school cafeteria.",
+        year: "2024",
+      },
+      {
+        id: 11,
+        title: "Workshop Results",
+        medium: "Mixed Media",
+        image: "student.jpeg",
+        description: "Collection of works from student workshops and collaborative projects.",
+        year: "2024",
+      },
+    ],
+  },
+]
+
+// State
+let selectedCategory = "All"
+let filteredCategories = galleryCategories
+let currentGalleryImages = []
+let currentImageIndex = 0
+
+// Update categories for filtering
+const categories = ["All", "Painting", "Digital Art", "Calligraphy", "Sketch", "Teaching"]
+
 // Data
 const education = [
   {
@@ -65,63 +211,6 @@ const awards = [
     description: "Acheived top rank among all the participants",
   },
 ]
-
-const artworks = [
-  {
-    id: 1,
-    title: "Fishing Boats-Van Gogh",
-    category: "Painting",
-    medium: "Acrylic on Canvas",
-    image: "acryliconcanvas.jpeg",
-    description: "A vibrant exploration of city life through abstract forms and bold colors.",
-  },
-  {
-    id: 2,
-    title: "Digital Dreams",
-    category: "Digital Art",
-    medium: "Digital Mixed Media",
-    image: "digital.jpeg",
-    description: "Contemporary digital artwork exploring the intersection of technology and emotion.",
-  },
-  {
-    id: 3,
-    title: "Calligraphy",
-    category: "Calligraphy",
-    medium: "Collage & Watercolor",
-    image: "calligraphy.jpeg",
-    description: "Organic forms and natural textures combined with traditional watercolor techniques.",
-  },
-  {
-    id: 4,
-    title: "Student Collaboration",
-    category: "Teaching",
-    medium: "Community Mural",
-    image: "student.jpeg",
-    description: "Large-scale mural created with high school students for the school cafeteria.",
-  },
-  {
-    id: 5,
-    title: "Portrait",
-    category: "Painting",
-    medium: "Oil on Canvas",
-    image: "portraitoncanvas.jpeg",
-    description: "Emotional expression through bold brushstrokes and dynamic color relationships.",
-  },
-  {
-    id: 6,
-    title: "Sketch",
-    category: "Sketch",
-    medium: "Pencil",
-    image: "sketch.jpeg",
-    description: "Three-dimensional exploration of organic and geometric forms.",
-  },
-]
-
-const categories = ["All", "Painting", "Digital Art", "Calligraphy", "Sketch", "Teaching"]
-
-// State
-let selectedCategory = "All"
-let filteredArtworks = artworks
 
 // DOM Elements
 const educationGrid = document.getElementById("educationGrid")
@@ -239,22 +328,25 @@ function renderFilterButtons() {
 }
 
 function renderGallery() {
-  filteredArtworks =
-    selectedCategory === "All" ? artworks : artworks.filter((artwork) => artwork.category === selectedCategory)
+  filteredCategories =
+    selectedCategory === "All"
+      ? galleryCategories
+      : galleryCategories.filter((cat) => cat.category === selectedCategory)
 
-  galleryGrid.innerHTML = filteredArtworks
+  galleryGrid.innerHTML = filteredCategories
     .map(
-      (artwork) => `
-        <div class="artwork-card fade-in" data-artwork-id="${artwork.id}">
+      (category) => `
+        <div class="artwork-card fade-in" data-category-id="${category.id}">
             <div class="artwork-image">
-                <img src="${artwork.image}" alt="${artwork.title}">
+                <img src="${category.coverImage}" alt="${category.title}">
+                <div class="image-count">${category.images.length} photos</div>
             </div>
             <div class="artwork-info">
-                <h3>${artwork.title}</h3>
-                <div class="medium">${artwork.medium}</div>
+                <h3>${category.title}</h3>
+                <div class="medium">${category.description}</div>
                 <div class="artwork-meta">
-                    <span class="category-badge">${artwork.category}</span>
-                    <span class="artwork-year">${artwork.year}</span>
+                    <span class="category-badge">${category.category}</span>
+                    <span class="artwork-count">${category.images.length} items</span>
                 </div>
             </div>
         </div>
@@ -263,20 +355,54 @@ function renderGallery() {
     .join("")
 }
 
-function showArtworkModal(artworkId) {
-  const artwork = artworks.find((art) => art.id === Number.parseInt(artworkId))
-  if (!artwork) return
+function showCategoryModal(categoryId) {
+  const category = galleryCategories.find((cat) => cat.id === Number.parseInt(categoryId))
+  if (!category) return
 
-  document.getElementById("modalImage").src = artwork.image
-  document.getElementById("modalImage").alt = artwork.title
-  document.getElementById("modalTitle").textContent = artwork.title
-  document.getElementById("modalCategory").textContent = artwork.category
-  document.getElementById("modalYear").textContent = artwork.year
-  document.getElementById("modalMedium").innerHTML = `<strong>Medium:</strong> ${artwork.medium}`
-  document.getElementById("modalDescription").textContent = artwork.description
+  currentGalleryImages = category.images
+  currentImageIndex = 0
 
+  updateModalContent()
   artworkModal.classList.add("active")
   document.body.style.overflow = "hidden"
+}
+
+function updateModalContent() {
+  if (currentGalleryImages.length === 0) return
+
+  const currentImage = currentGalleryImages[currentImageIndex]
+
+  document.getElementById("modalImage").src = currentImage.image
+  document.getElementById("modalImage").alt = currentImage.title
+  document.getElementById("modalTitle").textContent = currentImage.title
+  document.getElementById("modalCategory").textContent =
+    galleryCategories.find((cat) => cat.images.some((img) => img.id === currentImage.id))?.category || ""
+  document.getElementById("modalYear").textContent = currentImage.year
+  document.getElementById("modalMedium").innerHTML = `<strong>Medium:</strong> ${currentImage.medium}`
+  document.getElementById("modalDescription").textContent = currentImage.description
+
+  // Update navigation info
+  document.getElementById("modalImageCounter").textContent =
+    `${currentImageIndex + 1} of ${currentGalleryImages.length}`
+
+  // Update navigation buttons
+  const prevBtn = document.getElementById("modalPrevBtn")
+  const nextBtn = document.getElementById("modalNextBtn")
+
+  prevBtn.style.display = currentGalleryImages.length > 1 ? "block" : "none"
+  nextBtn.style.display = currentGalleryImages.length > 1 ? "block" : "none"
+
+  prevBtn.disabled = currentImageIndex === 0
+  nextBtn.disabled = currentImageIndex === currentGalleryImages.length - 1
+}
+
+function navigateModal(direction) {
+  if (direction === "prev" && currentImageIndex > 0) {
+    currentImageIndex--
+  } else if (direction === "next" && currentImageIndex < currentGalleryImages.length - 1) {
+    currentImageIndex++
+  }
+  updateModalContent()
 }
 
 function hideArtworkModal() {
@@ -307,18 +433,22 @@ function setupEventListeners() {
       selectedCategory = e.target.dataset.category
       renderFilterButtons()
       renderGallery()
-      setupScrollAnimations() // Re-setup animations for new elements
+      setupScrollAnimations()
     }
   })
 
-  // Gallery cards
+  // Gallery category cards
   galleryGrid.addEventListener("click", (e) => {
-    const artworkCard = e.target.closest(".artwork-card")
-    if (artworkCard) {
-      const artworkId = artworkCard.dataset.artworkId
-      showArtworkModal(artworkId)
+    const categoryCard = e.target.closest(".artwork-card")
+    if (categoryCard) {
+      const categoryId = categoryCard.dataset.categoryId
+      showCategoryModal(categoryId)
     }
   })
+
+  // Modal navigation
+  document.getElementById("modalPrevBtn").addEventListener("click", () => navigateModal("prev"))
+  document.getElementById("modalNextBtn").addEventListener("click", () => navigateModal("next"))
 
   // Modal close
   closeModal.addEventListener("click", hideArtworkModal)
@@ -328,15 +458,19 @@ function setupEventListeners() {
     }
   })
 
-  // Escape key to close modal and mobile menu
+  // Keyboard navigation
   document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape") {
-      if (artworkModal.classList.contains("active")) {
+    if (artworkModal.classList.contains("active")) {
+      if (e.key === "Escape") {
         hideArtworkModal()
+      } else if (e.key === "ArrowLeft") {
+        navigateModal("prev")
+      } else if (e.key === "ArrowRight") {
+        navigateModal("next")
       }
-      if (mobileMenuOverlay.classList.contains("active")) {
-        closeMobileMenu()
-      }
+    }
+    if (mobileMenuOverlay.classList.contains("active") && e.key === "Escape") {
+      closeMobileMenu()
     }
   })
 }
@@ -403,4 +537,5 @@ window.addEventListener(
     setupScrollAnimations()
   }, 250),
 )
+
 

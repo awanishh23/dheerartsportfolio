@@ -4,14 +4,15 @@ const education = [
     degree: "Master of Fine Arts (MFA)",
     school: "Banaras Hindu University",
     year: "2018",
-    focus: "Specialized in Illustration, Art Pedagogy, and Multimedia | Presented research on digital art education |<br> Authored dissertation on the evolution of illustration |",
+    focus:
+      "Specialized in Illustration, Art Pedagogy, and Multimedia | Presented research on digital art education |<br> Authored dissertation on the evolution of illustration |",
   },
   {
     degree: "Bachelor of Fine Arts (BFA)",
     school: "Banaras Hindu University",
     year: "2016",
     focus: "Visual Storytelling through Digital and Traditional Art Forms |",
-  }
+  },
 ]
 
 const experience = [
@@ -34,14 +35,14 @@ const experience = [
     skills: ["Mixed Media", "Gallery Exhibitions", "Art Sales", "Commission Work", "Art Curation"],
   },
   {
-    title: "Art TeacherAssistant Professor (Adjunct) - (Commercial/ Applied Art) ",
+    title: "Assistant Professor (Adjunct) - (Commercial/ Applied Art) ",
     company: "University Of Delhi",
     duration: "2018-2019",
     location: "Delhi",
     description:
-      "Taught art fundamentals to middle school students, organized school art shows, and collaborated with other teachers on interdisciplinary projects. Established the school's first digital art program.",
+      "Taught art fundamentals to middle college students, organized college art shows, and collaborated with other teachers on interdisciplinary projects.",
     skills: ["Art Fundamentals", "Event Organization", "Digital Art Program", "Interdisciplinary Teaching"],
-  }
+  },
 ]
 
 const awards = [
@@ -62,7 +63,7 @@ const awards = [
     organization: "Banaras Hindu University",
     year: "2017",
     description: "Acheived top rank among all the participants",
-  }
+  },
 ]
 
 const artworks = [
@@ -129,7 +130,21 @@ const filterButtons = document.getElementById("filterButtons")
 const galleryGrid = document.getElementById("galleryGrid")
 const artworkModal = document.getElementById("artworkModal")
 const closeModal = document.getElementById("closeModal")
-const experienceTimeline = document.getElementById("experienceTimeline")
+const hamburgerIcon = document.getElementById("hamburgerIcon")
+const mobileMenuOverlay = document.getElementById("mobileMenuOverlay")
+
+// Hamburger Menu Functions
+function toggleMobileMenu() {
+  hamburgerIcon.classList.toggle("active")
+  mobileMenuOverlay.classList.toggle("active")
+  document.body.style.overflow = mobileMenuOverlay.classList.contains("active") ? "hidden" : "auto"
+}
+
+function closeMobileMenu() {
+  hamburgerIcon.classList.remove("active")
+  mobileMenuOverlay.classList.remove("active")
+  document.body.style.overflow = "auto"
+}
 
 // Initialize
 document.addEventListener("DOMContentLoaded", () => {
@@ -187,7 +202,6 @@ function renderExperience() {
     )
     .join("")
 }
-
 
 function renderAwards() {
   awardsGrid.innerHTML = awards
@@ -272,6 +286,21 @@ function hideArtworkModal() {
 
 // Event Listeners
 function setupEventListeners() {
+  // Hamburger menu
+  hamburgerIcon.addEventListener("click", toggleMobileMenu)
+
+  // Close mobile menu when clicking on overlay
+  mobileMenuOverlay.addEventListener("click", (e) => {
+    if (e.target === mobileMenuOverlay) {
+      closeMobileMenu()
+    }
+  })
+
+  // Close mobile menu when clicking on navigation links
+  document.querySelectorAll(".mobile-nav-links a").forEach((link) => {
+    link.addEventListener("click", closeMobileMenu)
+  })
+
   // Filter buttons
   filterButtons.addEventListener("click", (e) => {
     if (e.target.classList.contains("filter-btn")) {
@@ -299,19 +328,16 @@ function setupEventListeners() {
     }
   })
 
-  // Escape key to close modal
+  // Escape key to close modal and mobile menu
   document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape" && artworkModal.classList.contains("active")) {
-      hideArtworkModal()
+    if (e.key === "Escape") {
+      if (artworkModal.classList.contains("active")) {
+        hideArtworkModal()
+      }
+      if (mobileMenuOverlay.classList.contains("active")) {
+        closeMobileMenu()
+      }
     }
-  })
-
-  // Mobile menu (basic implementation)
-  const mobileMenu = document.getElementById("mobileMenu")
-  const navLinks = document.querySelector(".nav-links")
-
-  mobileMenu.addEventListener("click", () => {
-    navLinks.style.display = navLinks.style.display === "flex" ? "none" : "flex"
   })
 }
 
@@ -369,7 +395,12 @@ function debounce(func, wait) {
 window.addEventListener(
   "resize",
   debounce(() => {
+    // Close mobile menu on resize to desktop
+    if (window.innerWidth > 768) {
+      closeMobileMenu()
+    }
     // Re-setup animations if needed
     setupScrollAnimations()
   }, 250),
 )
+

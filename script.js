@@ -5,7 +5,7 @@ const galleryCategories = [
     title: "Paintings",
     category: "Painting",
     description: "A collection of my painting works using various mediums",
-    coverImage: "acryliconcanva.jpeg",
+    coverImage: "acryliconcanvas.jpeg",
     images: [
       {
         id: 1,

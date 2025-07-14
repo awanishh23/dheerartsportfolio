@@ -102,7 +102,7 @@ const galleryCategories = [
         id: 9,
         title: "Architectural Sketch",
         medium: "Charcoal",
-        image: "sketch.jpeg",
+        image: "sketch2.jpg",
         description: "Detailed architectural study focusing on light and shadow.",
         year: "2023",
       },

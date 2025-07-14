@@ -190,10 +190,43 @@ const galleryCategories = [
         title: "Architectural Sketch",
         image: "sketch5.jpeg",
       },
+  {
+    id: 5,
+    title: "Portraits",
+    category: "Portrait",
+    description: "Human faces and Portraits",
+    coverImage: "portrait1.jpg",
+    images: [
+      {
+        id: 8,
+        title: "Figure Study",
+        medium: "Pencil on Paper",
+        image: "portrait1.jpg",
+      },
+      {
+        id: 9,
+        title: "Architectural Sketch",
+        image: "portrait2.jpg",
+      },
+      {
+        id: 9,
+        title: "Architectural Sketch",
+        image: "portrait3.jpg",
+      },
+      {
+        id: 9,
+        title: "Architectural Sketch",
+        image: "portrait4.jpeg",
+      },
+      {
+        id: 9,
+        title: "Architectural Sketch",
+        image: "portraitoncanvas.jpeg",
+      },
     ],
   },
   {
-    id: 5,
+    id: 6,
     title: "Teaching Projects",
     category: "Teaching",
     description: "Collaborative works with students",
@@ -238,7 +271,7 @@ let currentGalleryImages = []
 let currentImageIndex = 0
 
 // Update categories for filtering
-const categories = ["All", "Painting", "Digital Art", "Calligraphy", "Sketch", "Teaching"]
+const categories = ["All", "Painting", "Digital Art", "Calligraphy", "Sketch","Portrait", "Teaching"]
 
 // Data
 const education = [
